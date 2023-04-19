@@ -11,25 +11,43 @@ habitaciones = [
 
 Registro_personas={1003259544:"Ronald", 2515:"Jorman"} 
 
-def eliminar():
-    del Registro_personas["Documento"]
 
+
+
+
+
+
+def eliminar():
+    Delete=(input("Ingrese Dato que desea eliminar -> "))
+    if Delete in Registro_personas:          
+        Registro_personas.pop(Delete)
+        print(f"El elemento eliminado es: {Delete}")
+    elif Delete in Registro_personas:
+        print(f"{Delete} No existe ")
+
+    
 def registro():
     print("Bienvenido al registro Hotel bella vista.")
-    keys =int(input("Ingrese documento de identidad -> "))
-    value=input("Ingrese nombre - >")
-    Registro_personas[keys]=value
-
-
+    Documento1=int(input("Ingrese documento de identidad -> "))
+    value=input("Ingrese nombre - >").lower()
+    Registro_personas.update({"Documento1":"value"});system("cls")
+    print(f"Señor {value} usted ha sido agregado exitosamente! ")
 def editar():
     nombre_edit=input("ingrese el dato que quiere editar -> ")
-    Registro_personas.update({"Documento": nombre_edit})
-
+    if nombre_edit in Registro_personas:
+        Registro_personas.update({"Documento": nombre_edit})    
+    for nombre_edit in Registro_personas:
+        print(Registro_personas)
 def login():
-    usuario = int(input("Ingrese su documento de identidad ->"))
-    if Registro_personas[usuario]:
-        print("BIENVENIDO")
+    inicio=(input("¿Está usted registrado si/no? -> ")).lower();system("cls")
+    if inicio=="si":
+        usuario = int(input("Ingrese su documento de identidad ->"))
+        if usuario==Registro_personas:
+            print("BIENVENIDO")
         print("---------------------------");print(Registro_personas[usuario]), print("---------------------------")
+    if inicio== "no":
+        registro()
+        
 
 #Función para mostrar las habitaciones disponibles
 def mostrar_habitaciones():
@@ -42,12 +60,17 @@ def hacer_reserva(numero_habitacion, noches, personas):
         if habitacion["numero"] == numero_habitacion and habitacion["disponible"]:
             habitacion["disponible"] = False
             total = habitacion["precio"] * noches
-            print("---------------------------------------------------------------------------------------")
-            print(f'Reservaste la habitación {numero_habitacion} para {personas} personas por {noches} noches. Total a pagar: {total}')
-            print("---------------------------------------------------------------------------------------")
+            print("--------------------------------------------------")
+            print(f'Reservaste la habitación {numero_habitacion} para {personas} personas')
+            print("--------------------------------------------------")
+            print(f"por {noches} noches. Total a pagar: {total} dolares ")
+            print("--------------------------------------------------")
             return
     print(f'Lo siento, la habitación {numero_habitacion} no está disponible.')
 
+
+
+login()
 
 while True:
         print("Menú:")
@@ -70,7 +93,7 @@ while True:
             mostrar_habitaciones()
             numero_habitacion = int(input("Ingresa el número de la habitación que deseas reservar: "))
             noches = int(input("Ingresa el número de noches que te quedarás: "))
-            personas=int(input("Ingrese la cantidad de personas ->"))
+            personas=int(input("Ingrese la cantidad de personas ->"));system("cls")
             hacer_reserva(numero_habitacion, noches, personas)
             break
         if opcion=="5":
