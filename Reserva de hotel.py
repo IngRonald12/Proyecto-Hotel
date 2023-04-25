@@ -13,15 +13,7 @@ habitaciones = [
 #con un 3 me conformo :(
 
 reservaciones={}
-#Gestión de reservas
 
-#Gestion las habitaciones ocupadas 
-
-datos = {101: ["cedula", "nombre", "fechallegada", "fechasalida"],
-         102: [],
-         103: [],
-         104: [],
-         105: []}
 
 Registro_personas={1003259544:"Ronald", 2515:"Jorman"} #aumentar esos datos
 
